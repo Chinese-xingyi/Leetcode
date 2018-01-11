@@ -1,0 +1,32 @@
+class Solution:
+    def isOneBitCharacter(self, bits):
+        """
+        :type bits: List[int]
+        :rtype: bool
+        """
+        length =  len(bits)
+        if length == 1:
+            return True
+        elif length == 2:
+            if bits[0]==0 and bits[1]==0:
+                return True
+            else:
+                return False
+        elif bits[-1]==1:
+            return False
+        elif bits[-2]==0:
+            return True
+        elif bits[-3] == 0:
+            return False
+        global i; i = -3
+        while(bits[i]==1 and i>-1*length):
+            i -= 1
+        global count_of_1 
+        if bits[i] == 0:
+            count_of_1 = -2 - i
+        else:
+            count_of_1 = -1 - i
+        if count_of_1 % 2 == 0:
+            return True
+        else:
+            return False
